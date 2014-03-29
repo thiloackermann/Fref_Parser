@@ -13,7 +13,7 @@ fi!
 
 do
 a = a + 1!
-y = Funktion<<Number a>>!
+Funktion<<Number a>>!
 while<<a<10>>
 od!
 
