@@ -71,32 +71,33 @@ dfntn:  name=VARIABLE EQUALS expression #Definition
 compareKeyword: kw=(EQ | LT | GT);
 
 condition:
-          left=expression operator=compareKeyword right=expression #RelCond;  
-		  
+          left=expression operator=EQ right=expression #EQCond;
+          left=expression operator=LT right=expression #LTCond;
+		  left=expression operator=GT right=expression #GTCond;
 		  
 ifelseclause: IFLEXER 
 	   EXPRBRACKOPEN 
 	   cond=condition 
 	   EXPRBRACKCLOSE 
 	   IFTHEN 
-	   code
+	   ifcode=code
 	   ELSELEXER 
-	   code
+	   elsecode=code
 	   IFCLOSE;
 
 ifclause: IFLEXER EXPRBRACKOPEN 
        cond=condition
        EXPRBRACKCLOSE
 	   IFTHEN
-	   code
+	   ifcode=code
 	   IFCLOSE;
 
 
 dowhileclause: DOLEXER 
-	   code
+	   docode=code
        WHILELEXER
 	   EXPRBRACKOPEN
-	   cond = condition
+	   cond=condition
 	   EXPRBRACKCLOSE
        DOCLOSE;
 	   
