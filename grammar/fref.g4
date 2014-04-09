@@ -71,8 +71,8 @@ dfntn:  name=VARIABLE EQUALS expression #Definition
 compareKeyword: kw=(EQ | LT | GT);
 
 condition:
-          left=expression operator=EQ right=expression #EQCond;
-          left=expression operator=LT right=expression #LTCond;
+          left=expression operator=EQ right=expression #EQCond
+          left=expression operator=LT right=expression #LTCond
 		  left=expression operator=GT right=expression #GTCond;
 		  
 ifelseclause: IFLEXER 
