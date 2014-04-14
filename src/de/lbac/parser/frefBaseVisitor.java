@@ -42,6 +42,14 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitGTCond(@NotNull frefParser.GTCondContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitFnctcall(@NotNull frefParser.FnctcallContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -74,6 +82,14 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitFnctn(@NotNull frefParser.FnctnContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitCompareKeyword(@NotNull frefParser.CompareKeywordContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -82,15 +98,7 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRelCond(@NotNull frefParser.RelCondContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitFnctn(@NotNull frefParser.FnctnContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEQCond(@NotNull frefParser.EQCondContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -114,7 +122,7 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitStart(@NotNull frefParser.StartContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunctionParameter(@NotNull frefParser.FunctionParameterContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -122,7 +130,7 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunctionParameter(@NotNull frefParser.FunctionParameterContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStart(@NotNull frefParser.StartContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -155,6 +163,14 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitBrackets(@NotNull frefParser.BracketsContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitLTCond(@NotNull frefParser.LTCondContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
