@@ -12,6 +12,69 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link frefParser#fnctcall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFnctcall(@NotNull frefParser.FnctcallContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#compareKeyword}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCompareKeyword(@NotNull frefParser.CompareKeywordContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#FunctionParameter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionParameter(@NotNull frefParser.FunctionParameterContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#empty}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEmpty(@NotNull frefParser.EmptyContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#LTCond}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLTCond(@NotNull frefParser.LTCondContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#Brackets}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBrackets(@NotNull frefParser.BracketsContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#ifclause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfclause(@NotNull frefParser.IfclauseContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#Addition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAddition(@NotNull frefParser.AdditionContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#Konkat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitKonkat(@NotNull frefParser.KonkatContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link frefParser#DeclarationDefinition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -38,13 +101,6 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitGTCond(@NotNull frefParser.GTCondContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link frefParser#fnctcall}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFnctcall(@NotNull frefParser.FnctcallContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link frefParser#FuncCall}.
@@ -75,13 +131,6 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	T visitFnctn(@NotNull frefParser.FnctnContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link frefParser#compareKeyword}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCompareKeyword(@NotNull frefParser.CompareKeywordContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link frefParser#EQCond}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -103,13 +152,6 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	T visitDowhileclause(@NotNull frefParser.DowhileclauseContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link frefParser#FunctionParameter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionParameter(@NotNull frefParser.FunctionParameterContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link frefParser#start}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -124,13 +166,6 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	T visitIfelseclause(@NotNull frefParser.IfelseclauseContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link frefParser#empty}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEmpty(@NotNull frefParser.EmptyContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link frefParser#MultDivision}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -138,39 +173,11 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	T visitMultDivision(@NotNull frefParser.MultDivisionContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link frefParser#Brackets}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBrackets(@NotNull frefParser.BracketsContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link frefParser#LTCond}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLTCond(@NotNull frefParser.LTCondContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link frefParser#Addition}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAddition(@NotNull frefParser.AdditionContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link frefParser#ExpressionWithoutStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitExpressionWithoutStatement(@NotNull frefParser.ExpressionWithoutStatementContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link frefParser#ifclause}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIfclause(@NotNull frefParser.IfclauseContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link frefParser#Definition}.
