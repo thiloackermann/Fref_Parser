@@ -19,7 +19,8 @@ FUNCDEF: '#';
 
 // Variablentypen
 //VARIABLETYPE: [A-Z]([a-z]|[A-Z])*;
-VARIABLETYPE: 'Number';
+VARIABLETYPE: 'Number'
+		     |'String';
 
 // Variablenname
 VARIABLE: ([a-z]([a-z]|[A-Z]|[0-9])* | 'Ans' | 'This' | 'Return');
@@ -42,6 +43,7 @@ OS: '-';
 			//OC: OM | OD;
 OM: '*';
 OD: '/';
+OK: '~';
 
 EXPRBRACKOPEN: '<<';
 EXPRBRACKCLOSE: '>>';
@@ -128,6 +130,7 @@ expression: BRACKOPEN inBrackets=expression BRACKCLOSE #Brackets
           | left=expression (operator=OM | operator=OD) right=expression #MultDivision
           | left=expression operator=OS right=expression #Subtraction
           | left=expression operator=OA right=expression #Addition
+          | left=expression operator=OK right=expression #Konkat
 		  | empex = emptyExpression #empty
           ;
 
