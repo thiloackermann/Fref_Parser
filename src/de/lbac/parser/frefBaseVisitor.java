@@ -1,4 +1,4 @@
-// Generated from fref.g4 by ANTLR 4.2
+// Generated from grammar/fref.g4 by ANTLR 4.2
 package de.lbac.parser;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
@@ -66,7 +66,7 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIfclause(@NotNull frefParser.IfclauseContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAddition(@NotNull frefParser.AdditionContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -74,7 +74,7 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAddition(@NotNull frefParser.AdditionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIfclause(@NotNull frefParser.IfclauseContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -195,6 +195,14 @@ public class frefBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements f
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitMultDivision(@NotNull frefParser.MultDivisionContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitRetValue(@NotNull frefParser.RetValueContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}

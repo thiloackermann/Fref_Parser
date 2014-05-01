@@ -15,12 +15,13 @@ ELSELEXER: 'else:';
 DOLEXER: 'do';
 DOCLOSE: 'od';
 WHILELEXER: 'while';
+RETURNLEXER: 'return';
 FUNCDEF: '#';
 
 // Variablentypen
 //VARIABLETYPE: [A-Z]([a-z]|[A-Z])*;
 VARIABLETYPE: 'Number'
-		     |'String';
+		     |'Void';
 
 // Variablenname
 VARIABLE: ([a-z]([a-z]|[A-Z]|[0-9])* | 'Ans' | 'This' | 'Return');
@@ -58,9 +59,9 @@ GT: '>';
 
 //PARSER:
 
-start: code+;
+start: fnctn+;
 
-code: ((emptyExpression | ifelseclause | ifclause | dowhileclause | fnctn | dclrtndfntn | dclrtn | dfntn | fnctcall) LINEBREAK)+;
+code: ((emptyExpression | ifelseclause | ifclause | dowhileclause | dclrtndfntn | dclrtn | dfntn | fnctcall) LINEBREAK)+;
 
 dclrtn: type=VARIABLETYPE name=VARIABLE #Declaration
           ;
@@ -105,20 +106,24 @@ dowhileclause: DOLEXER
 	   
 fnctnPrm: type=VARIABLETYPE name=VARIABLE #FunctionParameter;
 	   
+retValue: RETURNLEXER name=VARIABLE? LINEBREAK;	   
+	   
 fnctn: FUNCDEF //#
 	   functionname = FUNCTNAME
        EXPRBRACKOPEN
-	   (fnctnPrm (PARAKOMMA fnctnPrm)*)?
+	   (fp=fnctnPrm)?
 	   EXPRBRACKCLOSE
 	   EXPRBRACKOPEN
 	   ret = VARIABLETYPE
 	   EXPRBRACKCLOSE
-	   code
-       FUNCDEF;
+	   funcode=code
+       retv=retValue?
+       FUNCDEF
+       LINEBREAK;
 	   
 fnctcall: functionname = FUNCTNAME
 		  EXPRBRACKOPEN
-		  (fnctnPrm (PARAKOMMA fnctnPrm)*)?
+		  (fp=fnctnPrm)?
 		  EXPRBRACKCLOSE;
 		  
 emptyExpression:  #ExpressionWithoutStatement;
@@ -126,7 +131,7 @@ emptyExpression:  #ExpressionWithoutStatement;
 expression: BRACKOPEN inBrackets=expression BRACKCLOSE #Brackets
 		  | number=NUMBER #Number
           | variable=VARIABLE #Variable
-          | func = fnctcall #FuncCall
+          | func=fnctcall #FuncCall
           | left=expression (operator=OM | operator=OD) right=expression #MultDivision
           | left=expression operator=OS right=expression #Subtraction
           | left=expression operator=OA right=expression #Addition

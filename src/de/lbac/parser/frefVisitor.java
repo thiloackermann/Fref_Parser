@@ -1,4 +1,4 @@
-// Generated from fref.g4 by ANTLR 4.2
+// Generated from grammar/fref.g4 by ANTLR 4.2
 package de.lbac.parser;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
@@ -54,18 +54,18 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	T visitBrackets(@NotNull frefParser.BracketsContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link frefParser#ifclause}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIfclause(@NotNull frefParser.IfclauseContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link frefParser#Addition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAddition(@NotNull frefParser.AdditionContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#ifclause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfclause(@NotNull frefParser.IfclauseContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link frefParser#Konkat}.
@@ -171,6 +171,13 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMultDivision(@NotNull frefParser.MultDivisionContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link frefParser#retValue}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRetValue(@NotNull frefParser.RetValueContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link frefParser#ExpressionWithoutStatement}.

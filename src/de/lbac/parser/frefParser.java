@@ -1,4 +1,4 @@
-// Generated from fref.g4 by ANTLR 4.2
+// Generated from grammar/fref.g4 by ANTLR 4.2
 package de.lbac.parser;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -16,25 +16,25 @@ public class frefParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		LINEBREAK=1, FUNCTION=2, IFLEXER=3, IFCLOSE=4, IFTHEN=5, ELSELEXER=6, 
-		DOLEXER=7, DOCLOSE=8, WHILELEXER=9, FUNCDEF=10, VARIABLETYPE=11, VARIABLE=12, 
-		FUNCTNAME=13, NUMBER=14, WHITE=15, STRING=16, OA=17, OS=18, OM=19, OD=20, 
-		OK=21, EXPRBRACKOPEN=22, EXPRBRACKCLOSE=23, BRACKOPEN=24, BRACKCLOSE=25, 
-		EQ=26, EQUALS=27, PARAKOMMA=28, LT=29, GT=30;
+		DOLEXER=7, DOCLOSE=8, WHILELEXER=9, RETURNLEXER=10, FUNCDEF=11, VARIABLETYPE=12, 
+		VARIABLE=13, FUNCTNAME=14, NUMBER=15, WHITE=16, STRING=17, OA=18, OS=19, 
+		OM=20, OD=21, OK=22, EXPRBRACKOPEN=23, EXPRBRACKCLOSE=24, BRACKOPEN=25, 
+		BRACKCLOSE=26, EQ=27, EQUALS=28, PARAKOMMA=29, LT=30, GT=31;
 	public static final String[] tokenNames = {
 		"<INVALID>", "'!'", "'function'", "'if'", "'fi'", "'then:'", "'else:'", 
-		"'do'", "'od'", "'while'", "'#'", "VARIABLETYPE", "VARIABLE", "FUNCTNAME", 
-		"NUMBER", "WHITE", "STRING", "'+'", "'-'", "'*'", "'/'", "'~'", "'<<'", 
-		"'>>'", "'('", "')'", "'=='", "'='", "','", "'<'", "'>'"
+		"'do'", "'od'", "'while'", "'return'", "'#'", "VARIABLETYPE", "VARIABLE", 
+		"FUNCTNAME", "NUMBER", "WHITE", "STRING", "'+'", "'-'", "'*'", "'/'", 
+		"'~'", "'<<'", "'>>'", "'('", "')'", "'=='", "'='", "','", "'<'", "'>'"
 	};
 	public static final int
 		RULE_start = 0, RULE_code = 1, RULE_dclrtn = 2, RULE_dclrtndfntn = 3, 
 		RULE_dfntn = 4, RULE_compareKeyword = 5, RULE_condition = 6, RULE_ifelseclause = 7, 
-		RULE_ifclause = 8, RULE_dowhileclause = 9, RULE_fnctnPrm = 10, RULE_fnctn = 11, 
-		RULE_fnctcall = 12, RULE_emptyExpression = 13, RULE_expression = 14;
+		RULE_ifclause = 8, RULE_dowhileclause = 9, RULE_fnctnPrm = 10, RULE_retValue = 11, 
+		RULE_fnctn = 12, RULE_fnctcall = 13, RULE_emptyExpression = 14, RULE_expression = 15;
 	public static final String[] ruleNames = {
 		"start", "code", "dclrtn", "dclrtndfntn", "dfntn", "compareKeyword", "condition", 
-		"ifelseclause", "ifclause", "dowhileclause", "fnctnPrm", "fnctn", "fnctcall", 
-		"emptyExpression", "expression"
+		"ifelseclause", "ifclause", "dowhileclause", "fnctnPrm", "retValue", "fnctn", 
+		"fnctcall", "emptyExpression", "expression"
 	};
 
 	@Override
@@ -57,11 +57,11 @@ public class frefParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class StartContext extends ParserRuleContext {
-		public CodeContext code(int i) {
-			return getRuleContext(CodeContext.class,i);
+		public List<FnctnContext> fnctn() {
+			return getRuleContexts(FnctnContext.class);
 		}
-		public List<CodeContext> code() {
-			return getRuleContexts(CodeContext.class);
+		public FnctnContext fnctn(int i) {
+			return getRuleContext(FnctnContext.class,i);
 		}
 		public StartContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -81,19 +81,19 @@ public class frefParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(31); 
+			setState(33); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(30); code();
+				setState(32); fnctn();
 				}
 				}
-				setState(33); 
+				setState(35); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LINEBREAK) | (1L << IFLEXER) | (1L << DOLEXER) | (1L << FUNCDEF) | (1L << VARIABLETYPE) | (1L << VARIABLE) | (1L << FUNCTNAME))) != 0) );
+			} while ( _la==FUNCDEF );
 			}
 		}
 		catch (RecognitionException re) {
@@ -110,9 +110,6 @@ public class frefParser extends Parser {
 	public static class CodeContext extends ParserRuleContext {
 		public DclrtndfntnContext dclrtndfntn(int i) {
 			return getRuleContext(DclrtndfntnContext.class,i);
-		}
-		public List<FnctnContext> fnctn() {
-			return getRuleContexts(FnctnContext.class);
 		}
 		public List<IfclauseContext> ifclause() {
 			return getRuleContexts(IfclauseContext.class);
@@ -163,9 +160,6 @@ public class frefParser extends Parser {
 		public FnctcallContext fnctcall(int i) {
 			return getRuleContext(FnctcallContext.class,i);
 		}
-		public FnctnContext fnctn(int i) {
-			return getRuleContext(FnctnContext.class,i);
-		}
 		public CodeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -180,85 +174,73 @@ public class frefParser extends Parser {
 	public final CodeContext code() throws RecognitionException {
 		CodeContext _localctx = new CodeContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_code);
+		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48); 
+			setState(49); 
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
+			_la = _input.LA(1);
 			do {
-				switch (_alt) {
+				{
+				{
+				setState(45);
+				switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 				case 1:
 					{
-					{
-					setState(44);
-					switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
-					case 1:
-						{
-						setState(35); emptyExpression();
-						}
-						break;
-
-					case 2:
-						{
-						setState(36); ifelseclause();
-						}
-						break;
-
-					case 3:
-						{
-						setState(37); ifclause();
-						}
-						break;
-
-					case 4:
-						{
-						setState(38); dowhileclause();
-						}
-						break;
-
-					case 5:
-						{
-						setState(39); fnctn();
-						}
-						break;
-
-					case 6:
-						{
-						setState(40); dclrtndfntn();
-						}
-						break;
-
-					case 7:
-						{
-						setState(41); dclrtn();
-						}
-						break;
-
-					case 8:
-						{
-						setState(42); dfntn();
-						}
-						break;
-
-					case 9:
-						{
-						setState(43); fnctcall();
-						}
-						break;
-					}
-					setState(46); match(LINEBREAK);
-					}
+					setState(37); emptyExpression();
 					}
 					break;
-				default:
-					throw new NoViableAltException(this);
+
+				case 2:
+					{
+					setState(38); ifelseclause();
+					}
+					break;
+
+				case 3:
+					{
+					setState(39); ifclause();
+					}
+					break;
+
+				case 4:
+					{
+					setState(40); dowhileclause();
+					}
+					break;
+
+				case 5:
+					{
+					setState(41); dclrtndfntn();
+					}
+					break;
+
+				case 6:
+					{
+					setState(42); dclrtn();
+					}
+					break;
+
+				case 7:
+					{
+					setState(43); dfntn();
+					}
+					break;
+
+				case 8:
+					{
+					setState(44); fnctcall();
+					}
+					break;
 				}
-				setState(50); 
+				setState(47); match(LINEBREAK);
+				}
+				}
+				setState(51); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
-			} while ( _alt!=2 && _alt!=-1 );
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LINEBREAK) | (1L << IFLEXER) | (1L << DOLEXER) | (1L << VARIABLETYPE) | (1L << VARIABLE) | (1L << FUNCTNAME))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -303,8 +285,8 @@ public class frefParser extends Parser {
 			_localctx = new DeclarationContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(52); ((DeclarationContext)_localctx).type = match(VARIABLETYPE);
-			setState(53); ((DeclarationContext)_localctx).name = match(VARIABLE);
+			setState(53); ((DeclarationContext)_localctx).type = match(VARIABLETYPE);
+			setState(54); ((DeclarationContext)_localctx).name = match(VARIABLE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -353,10 +335,10 @@ public class frefParser extends Parser {
 			_localctx = new DeclarationDefinitionContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(55); ((DeclarationDefinitionContext)_localctx).type = match(VARIABLETYPE);
-			setState(56); ((DeclarationDefinitionContext)_localctx).name = match(VARIABLE);
-			setState(57); match(EQUALS);
-			setState(58); expression(0);
+			setState(56); ((DeclarationDefinitionContext)_localctx).type = match(VARIABLETYPE);
+			setState(57); ((DeclarationDefinitionContext)_localctx).name = match(VARIABLE);
+			setState(58); match(EQUALS);
+			setState(59); expression(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -403,9 +385,9 @@ public class frefParser extends Parser {
 			_localctx = new DefinitionContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60); ((DefinitionContext)_localctx).name = match(VARIABLE);
-			setState(61); match(EQUALS);
-			setState(62); expression(0);
+			setState(61); ((DefinitionContext)_localctx).name = match(VARIABLE);
+			setState(62); match(EQUALS);
+			setState(63); expression(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -442,7 +424,7 @@ public class frefParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64);
+			setState(65);
 			((CompareKeywordContext)_localctx).kw = _input.LT(1);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EQ) | (1L << LT) | (1L << GT))) != 0)) ) {
@@ -532,15 +514,15 @@ public class frefParser extends Parser {
 		ConditionContext _localctx = new ConditionContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_condition);
 		try {
-			setState(78);
+			setState(79);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				_localctx = new EQCondContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(66); ((EQCondContext)_localctx).left = expression(0);
-				setState(67); ((EQCondContext)_localctx).operator = match(EQ);
-				setState(68); ((EQCondContext)_localctx).right = expression(0);
+				setState(67); ((EQCondContext)_localctx).left = expression(0);
+				setState(68); ((EQCondContext)_localctx).operator = match(EQ);
+				setState(69); ((EQCondContext)_localctx).right = expression(0);
 				}
 				break;
 
@@ -548,9 +530,9 @@ public class frefParser extends Parser {
 				_localctx = new LTCondContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(70); ((LTCondContext)_localctx).left = expression(0);
-				setState(71); ((LTCondContext)_localctx).operator = match(LT);
-				setState(72); ((LTCondContext)_localctx).right = expression(0);
+				setState(71); ((LTCondContext)_localctx).left = expression(0);
+				setState(72); ((LTCondContext)_localctx).operator = match(LT);
+				setState(73); ((LTCondContext)_localctx).right = expression(0);
 				}
 				break;
 
@@ -558,9 +540,9 @@ public class frefParser extends Parser {
 				_localctx = new GTCondContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(74); ((GTCondContext)_localctx).left = expression(0);
-				setState(75); ((GTCondContext)_localctx).operator = match(GT);
-				setState(76); ((GTCondContext)_localctx).right = expression(0);
+				setState(75); ((GTCondContext)_localctx).left = expression(0);
+				setState(76); ((GTCondContext)_localctx).operator = match(GT);
+				setState(77); ((GTCondContext)_localctx).right = expression(0);
 				}
 				break;
 			}
@@ -612,15 +594,15 @@ public class frefParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(80); match(IFLEXER);
-			setState(81); match(EXPRBRACKOPEN);
-			setState(82); ((IfelseclauseContext)_localctx).cond = condition();
-			setState(83); match(EXPRBRACKCLOSE);
-			setState(84); match(IFTHEN);
-			setState(85); ((IfelseclauseContext)_localctx).ifcode = code();
-			setState(86); match(ELSELEXER);
-			setState(87); ((IfelseclauseContext)_localctx).elsecode = code();
-			setState(88); match(IFCLOSE);
+			setState(81); match(IFLEXER);
+			setState(82); match(EXPRBRACKOPEN);
+			setState(83); ((IfelseclauseContext)_localctx).cond = condition();
+			setState(84); match(EXPRBRACKCLOSE);
+			setState(85); match(IFTHEN);
+			setState(86); ((IfelseclauseContext)_localctx).ifcode = code();
+			setState(87); match(ELSELEXER);
+			setState(88); ((IfelseclauseContext)_localctx).elsecode = code();
+			setState(89); match(IFCLOSE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -665,13 +647,13 @@ public class frefParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(90); match(IFLEXER);
-			setState(91); match(EXPRBRACKOPEN);
-			setState(92); ((IfclauseContext)_localctx).cond = condition();
-			setState(93); match(EXPRBRACKCLOSE);
-			setState(94); match(IFTHEN);
-			setState(95); ((IfclauseContext)_localctx).ifcode = code();
-			setState(96); match(IFCLOSE);
+			setState(91); match(IFLEXER);
+			setState(92); match(EXPRBRACKOPEN);
+			setState(93); ((IfclauseContext)_localctx).cond = condition();
+			setState(94); match(EXPRBRACKCLOSE);
+			setState(95); match(IFTHEN);
+			setState(96); ((IfclauseContext)_localctx).ifcode = code();
+			setState(97); match(IFCLOSE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -716,13 +698,13 @@ public class frefParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(98); match(DOLEXER);
-			setState(99); ((DowhileclauseContext)_localctx).docode = code();
-			setState(100); match(WHILELEXER);
-			setState(101); match(EXPRBRACKOPEN);
-			setState(102); ((DowhileclauseContext)_localctx).cond = condition();
-			setState(103); match(EXPRBRACKCLOSE);
-			setState(104); match(DOCLOSE);
+			setState(99); match(DOLEXER);
+			setState(100); ((DowhileclauseContext)_localctx).docode = code();
+			setState(101); match(WHILELEXER);
+			setState(102); match(EXPRBRACKOPEN);
+			setState(103); ((DowhileclauseContext)_localctx).cond = condition();
+			setState(104); match(EXPRBRACKCLOSE);
+			setState(105); match(DOCLOSE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -767,8 +749,54 @@ public class frefParser extends Parser {
 			_localctx = new FunctionParameterContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(106); ((FunctionParameterContext)_localctx).type = match(VARIABLETYPE);
-			setState(107); ((FunctionParameterContext)_localctx).name = match(VARIABLE);
+			setState(107); ((FunctionParameterContext)_localctx).type = match(VARIABLETYPE);
+			setState(108); ((FunctionParameterContext)_localctx).name = match(VARIABLE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class RetValueContext extends ParserRuleContext {
+		public Token name;
+		public TerminalNode VARIABLE() { return getToken(frefParser.VARIABLE, 0); }
+		public TerminalNode LINEBREAK() { return getToken(frefParser.LINEBREAK, 0); }
+		public TerminalNode RETURNLEXER() { return getToken(frefParser.RETURNLEXER, 0); }
+		public RetValueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_retValue; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof frefVisitor ) return ((frefVisitor<? extends T>)visitor).visitRetValue(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final RetValueContext retValue() throws RecognitionException {
+		RetValueContext _localctx = new RetValueContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_retValue);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(110); match(RETURNLEXER);
+			setState(112);
+			_la = _input.LA(1);
+			if (_la==VARIABLE) {
+				{
+				setState(111); ((RetValueContext)_localctx).name = match(VARIABLE);
+				}
+			}
+
+			setState(114); match(LINEBREAK);
 			}
 		}
 		catch (RecognitionException re) {
@@ -784,33 +812,33 @@ public class frefParser extends Parser {
 
 	public static class FnctnContext extends ParserRuleContext {
 		public Token functionname;
+		public FnctnPrmContext fp;
 		public Token ret;
+		public CodeContext funcode;
+		public RetValueContext retv;
 		public TerminalNode EXPRBRACKOPEN(int i) {
 			return getToken(frefParser.EXPRBRACKOPEN, i);
 		}
-		public FnctnPrmContext fnctnPrm(int i) {
-			return getRuleContext(FnctnPrmContext.class,i);
-		}
-		public List<TerminalNode> PARAKOMMA() { return getTokens(frefParser.PARAKOMMA); }
 		public TerminalNode EXPRBRACKCLOSE(int i) {
 			return getToken(frefParser.EXPRBRACKCLOSE, i);
 		}
-		public TerminalNode PARAKOMMA(int i) {
-			return getToken(frefParser.PARAKOMMA, i);
+		public RetValueContext retValue() {
+			return getRuleContext(RetValueContext.class,0);
 		}
+		public TerminalNode LINEBREAK() { return getToken(frefParser.LINEBREAK, 0); }
 		public TerminalNode FUNCDEF(int i) {
 			return getToken(frefParser.FUNCDEF, i);
 		}
 		public List<TerminalNode> EXPRBRACKCLOSE() { return getTokens(frefParser.EXPRBRACKCLOSE); }
 		public TerminalNode FUNCTNAME() { return getToken(frefParser.FUNCTNAME, 0); }
 		public List<TerminalNode> EXPRBRACKOPEN() { return getTokens(frefParser.EXPRBRACKOPEN); }
-		public List<FnctnPrmContext> fnctnPrm() {
-			return getRuleContexts(FnctnPrmContext.class);
+		public FnctnPrmContext fnctnPrm() {
+			return getRuleContext(FnctnPrmContext.class,0);
 		}
-		public TerminalNode VARIABLETYPE() { return getToken(frefParser.VARIABLETYPE, 0); }
 		public CodeContext code() {
 			return getRuleContext(CodeContext.class,0);
 		}
+		public TerminalNode VARIABLETYPE() { return getToken(frefParser.VARIABLETYPE, 0); }
 		public List<TerminalNode> FUNCDEF() { return getTokens(frefParser.FUNCDEF); }
 		public FnctnContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -825,33 +853,19 @@ public class frefParser extends Parser {
 
 	public final FnctnContext fnctn() throws RecognitionException {
 		FnctnContext _localctx = new FnctnContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_fnctn);
+		enterRule(_localctx, 24, RULE_fnctn);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(109); match(FUNCDEF);
-			setState(110); ((FnctnContext)_localctx).functionname = match(FUNCTNAME);
-			setState(111); match(EXPRBRACKOPEN);
+			setState(116); match(FUNCDEF);
+			setState(117); ((FnctnContext)_localctx).functionname = match(FUNCTNAME);
+			setState(118); match(EXPRBRACKOPEN);
 			setState(120);
 			_la = _input.LA(1);
 			if (_la==VARIABLETYPE) {
 				{
-				setState(112); fnctnPrm();
-				setState(117);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==PARAKOMMA) {
-					{
-					{
-					setState(113); match(PARAKOMMA);
-					setState(114); fnctnPrm();
-					}
-					}
-					setState(119);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
+				setState(119); ((FnctnContext)_localctx).fp = fnctnPrm();
 				}
 			}
 
@@ -859,8 +873,17 @@ public class frefParser extends Parser {
 			setState(123); match(EXPRBRACKOPEN);
 			setState(124); ((FnctnContext)_localctx).ret = match(VARIABLETYPE);
 			setState(125); match(EXPRBRACKCLOSE);
-			setState(126); code();
-			setState(127); match(FUNCDEF);
+			setState(126); ((FnctnContext)_localctx).funcode = code();
+			setState(128);
+			_la = _input.LA(1);
+			if (_la==RETURNLEXER) {
+				{
+				setState(127); ((FnctnContext)_localctx).retv = retValue();
+				}
+			}
+
+			setState(130); match(FUNCDEF);
+			setState(131); match(LINEBREAK);
 			}
 		}
 		catch (RecognitionException re) {
@@ -876,18 +899,12 @@ public class frefParser extends Parser {
 
 	public static class FnctcallContext extends ParserRuleContext {
 		public Token functionname;
-		public FnctnPrmContext fnctnPrm(int i) {
-			return getRuleContext(FnctnPrmContext.class,i);
-		}
-		public List<TerminalNode> PARAKOMMA() { return getTokens(frefParser.PARAKOMMA); }
-		public TerminalNode PARAKOMMA(int i) {
-			return getToken(frefParser.PARAKOMMA, i);
-		}
+		public FnctnPrmContext fp;
 		public TerminalNode EXPRBRACKCLOSE() { return getToken(frefParser.EXPRBRACKCLOSE, 0); }
 		public TerminalNode FUNCTNAME() { return getToken(frefParser.FUNCTNAME, 0); }
 		public TerminalNode EXPRBRACKOPEN() { return getToken(frefParser.EXPRBRACKOPEN, 0); }
-		public List<FnctnPrmContext> fnctnPrm() {
-			return getRuleContexts(FnctnPrmContext.class);
+		public FnctnPrmContext fnctnPrm() {
+			return getRuleContext(FnctnPrmContext.class,0);
 		}
 		public FnctcallContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -902,36 +919,22 @@ public class frefParser extends Parser {
 
 	public final FnctcallContext fnctcall() throws RecognitionException {
 		FnctcallContext _localctx = new FnctcallContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_fnctcall);
+		enterRule(_localctx, 26, RULE_fnctcall);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(129); ((FnctcallContext)_localctx).functionname = match(FUNCTNAME);
-			setState(130); match(EXPRBRACKOPEN);
-			setState(139);
+			setState(133); ((FnctcallContext)_localctx).functionname = match(FUNCTNAME);
+			setState(134); match(EXPRBRACKOPEN);
+			setState(136);
 			_la = _input.LA(1);
 			if (_la==VARIABLETYPE) {
 				{
-				setState(131); fnctnPrm();
-				setState(136);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==PARAKOMMA) {
-					{
-					{
-					setState(132); match(PARAKOMMA);
-					setState(133); fnctnPrm();
-					}
-					}
-					setState(138);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
+				setState(135); ((FnctcallContext)_localctx).fp = fnctnPrm();
 				}
 			}
 
-			setState(141); match(EXPRBRACKCLOSE);
+			setState(138); match(EXPRBRACKCLOSE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -967,7 +970,7 @@ public class frefParser extends Parser {
 
 	public final EmptyExpressionContext emptyExpression() throws RecognitionException {
 		EmptyExpressionContext _localctx = new EmptyExpressionContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_emptyExpression);
+		enterRule(_localctx, 28, RULE_emptyExpression);
 		try {
 			_localctx = new ExpressionWithoutStatementContext(_localctx);
 			enterOuterAlt(_localctx, 1);
@@ -1137,13 +1140,13 @@ public class frefParser extends Parser {
 		int _parentState = getState();
 		ExpressionContext _localctx = new ExpressionContext(_ctx, _parentState);
 		ExpressionContext _prevctx = _localctx;
-		int _startState = 28;
-		enterRecursionRule(_localctx, 28, RULE_expression, _p);
+		int _startState = 30;
+		enterRecursionRule(_localctx, 30, RULE_expression, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(154);
+			setState(151);
 			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				{
@@ -1151,9 +1154,9 @@ public class frefParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(146); match(BRACKOPEN);
-				setState(147); ((BracketsContext)_localctx).inBrackets = expression(0);
-				setState(148); match(BRACKCLOSE);
+				setState(143); match(BRACKOPEN);
+				setState(144); ((BracketsContext)_localctx).inBrackets = expression(0);
+				setState(145); match(BRACKCLOSE);
 				}
 				break;
 
@@ -1162,7 +1165,7 @@ public class frefParser extends Parser {
 				_localctx = new NumberContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(150); ((NumberContext)_localctx).number = match(NUMBER);
+				setState(147); ((NumberContext)_localctx).number = match(NUMBER);
 				}
 				break;
 
@@ -1171,7 +1174,7 @@ public class frefParser extends Parser {
 				_localctx = new VariableContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(151); ((VariableContext)_localctx).variable = match(VARIABLE);
+				setState(148); ((VariableContext)_localctx).variable = match(VARIABLE);
 				}
 				break;
 
@@ -1180,7 +1183,7 @@ public class frefParser extends Parser {
 				_localctx = new FuncCallContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(152); ((FuncCallContext)_localctx).func = fnctcall();
+				setState(149); ((FuncCallContext)_localctx).func = fnctcall();
 				}
 				break;
 
@@ -1189,12 +1192,12 @@ public class frefParser extends Parser {
 				_localctx = new EmptyContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(153); ((EmptyContext)_localctx).empex = emptyExpression();
+				setState(150); ((EmptyContext)_localctx).empex = emptyExpression();
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(173);
+			setState(170);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
 			while ( _alt!=2 && _alt!=-1 ) {
@@ -1202,31 +1205,31 @@ public class frefParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(171);
+					setState(168);
 					switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 					case 1:
 						{
 						_localctx = new MultDivisionContext(new ExpressionContext(_parentctx, _parentState));
 						((MultDivisionContext)_localctx).left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(156);
+						setState(153);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(159);
+						setState(156);
 						switch (_input.LA(1)) {
 						case OM:
 							{
-							setState(157); ((MultDivisionContext)_localctx).operator = match(OM);
+							setState(154); ((MultDivisionContext)_localctx).operator = match(OM);
 							}
 							break;
 						case OD:
 							{
-							setState(158); ((MultDivisionContext)_localctx).operator = match(OD);
+							setState(155); ((MultDivisionContext)_localctx).operator = match(OD);
 							}
 							break;
 						default:
 							throw new NoViableAltException(this);
 						}
-						setState(161); ((MultDivisionContext)_localctx).right = expression(6);
+						setState(158); ((MultDivisionContext)_localctx).right = expression(6);
 						}
 						break;
 
@@ -1235,10 +1238,10 @@ public class frefParser extends Parser {
 						_localctx = new SubtractionContext(new ExpressionContext(_parentctx, _parentState));
 						((SubtractionContext)_localctx).left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(162);
+						setState(159);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(163); ((SubtractionContext)_localctx).operator = match(OS);
-						setState(164); ((SubtractionContext)_localctx).right = expression(5);
+						setState(160); ((SubtractionContext)_localctx).operator = match(OS);
+						setState(161); ((SubtractionContext)_localctx).right = expression(5);
 						}
 						break;
 
@@ -1247,10 +1250,10 @@ public class frefParser extends Parser {
 						_localctx = new AdditionContext(new ExpressionContext(_parentctx, _parentState));
 						((AdditionContext)_localctx).left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(165);
+						setState(162);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(166); ((AdditionContext)_localctx).operator = match(OA);
-						setState(167); ((AdditionContext)_localctx).right = expression(4);
+						setState(163); ((AdditionContext)_localctx).operator = match(OA);
+						setState(164); ((AdditionContext)_localctx).right = expression(4);
 						}
 						break;
 
@@ -1259,16 +1262,16 @@ public class frefParser extends Parser {
 						_localctx = new KonkatContext(new ExpressionContext(_parentctx, _parentState));
 						((KonkatContext)_localctx).left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(168);
+						setState(165);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(169); ((KonkatContext)_localctx).operator = match(OK);
-						setState(170); ((KonkatContext)_localctx).right = expression(3);
+						setState(166); ((KonkatContext)_localctx).operator = match(OK);
+						setState(167); ((KonkatContext)_localctx).right = expression(3);
 						}
 						break;
 					}
 					} 
 				}
-				setState(175);
+				setState(172);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
 			}
@@ -1287,7 +1290,7 @@ public class frefParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 14: return expression_sempred((ExpressionContext)_localctx, predIndex);
+		case 15: return expression_sempred((ExpressionContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -1305,59 +1308,57 @@ public class frefParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3 \u00b3\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3!\u00b0\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\3\2\6\2\"\n\2\r\2\16"+
-		"\2#\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3/\n\3\3\3\3\3\6\3\63\n\3\r"+
-		"\3\16\3\64\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\b"+
-		"\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\bQ\n\b\3\t\3\t\3\t\3\t"+
-		"\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13"+
-		"\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\7\rv\n\r"+
-		"\f\r\16\ry\13\r\5\r{\n\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3"+
-		"\16\3\16\7\16\u0089\n\16\f\16\16\16\u008c\13\16\5\16\u008e\n\16\3\16\3"+
-		"\16\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u009d"+
-		"\n\20\3\20\3\20\3\20\5\20\u00a2\n\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20"+
-		"\3\20\3\20\3\20\7\20\u00ae\n\20\f\20\16\20\u00b1\13\20\3\20\2\3\36\21"+
-		"\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36\2\3\4\2\34\34\37 \u00bc\2!\3\2"+
-		"\2\2\4\62\3\2\2\2\6\66\3\2\2\2\b9\3\2\2\2\n>\3\2\2\2\fB\3\2\2\2\16P\3"+
-		"\2\2\2\20R\3\2\2\2\22\\\3\2\2\2\24d\3\2\2\2\26l\3\2\2\2\30o\3\2\2\2\32"+
-		"\u0083\3\2\2\2\34\u0091\3\2\2\2\36\u009c\3\2\2\2 \"\5\4\3\2! \3\2\2\2"+
-		"\"#\3\2\2\2#!\3\2\2\2#$\3\2\2\2$\3\3\2\2\2%/\5\34\17\2&/\5\20\t\2\'/\5"+
-		"\22\n\2(/\5\24\13\2)/\5\30\r\2*/\5\b\5\2+/\5\6\4\2,/\5\n\6\2-/\5\32\16"+
-		"\2.%\3\2\2\2.&\3\2\2\2.\'\3\2\2\2.(\3\2\2\2.)\3\2\2\2.*\3\2\2\2.+\3\2"+
-		"\2\2.,\3\2\2\2.-\3\2\2\2/\60\3\2\2\2\60\61\7\3\2\2\61\63\3\2\2\2\62.\3"+
-		"\2\2\2\63\64\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\5\3\2\2\2\66\67\7"+
-		"\r\2\2\678\7\16\2\28\7\3\2\2\29:\7\r\2\2:;\7\16\2\2;<\7\35\2\2<=\5\36"+
-		"\20\2=\t\3\2\2\2>?\7\16\2\2?@\7\35\2\2@A\5\36\20\2A\13\3\2\2\2BC\t\2\2"+
-		"\2C\r\3\2\2\2DE\5\36\20\2EF\7\34\2\2FG\5\36\20\2GQ\3\2\2\2HI\5\36\20\2"+
-		"IJ\7\37\2\2JK\5\36\20\2KQ\3\2\2\2LM\5\36\20\2MN\7 \2\2NO\5\36\20\2OQ\3"+
-		"\2\2\2PD\3\2\2\2PH\3\2\2\2PL\3\2\2\2Q\17\3\2\2\2RS\7\5\2\2ST\7\30\2\2"+
-		"TU\5\16\b\2UV\7\31\2\2VW\7\7\2\2WX\5\4\3\2XY\7\b\2\2YZ\5\4\3\2Z[\7\6\2"+
-		"\2[\21\3\2\2\2\\]\7\5\2\2]^\7\30\2\2^_\5\16\b\2_`\7\31\2\2`a\7\7\2\2a"+
-		"b\5\4\3\2bc\7\6\2\2c\23\3\2\2\2de\7\t\2\2ef\5\4\3\2fg\7\13\2\2gh\7\30"+
-		"\2\2hi\5\16\b\2ij\7\31\2\2jk\7\n\2\2k\25\3\2\2\2lm\7\r\2\2mn\7\16\2\2"+
-		"n\27\3\2\2\2op\7\f\2\2pq\7\17\2\2qz\7\30\2\2rw\5\26\f\2st\7\36\2\2tv\5"+
-		"\26\f\2us\3\2\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2x{\3\2\2\2yw\3\2\2\2zr"+
-		"\3\2\2\2z{\3\2\2\2{|\3\2\2\2|}\7\31\2\2}~\7\30\2\2~\177\7\r\2\2\177\u0080"+
-		"\7\31\2\2\u0080\u0081\5\4\3\2\u0081\u0082\7\f\2\2\u0082\31\3\2\2\2\u0083"+
-		"\u0084\7\17\2\2\u0084\u008d\7\30\2\2\u0085\u008a\5\26\f\2\u0086\u0087"+
-		"\7\36\2\2\u0087\u0089\5\26\f\2\u0088\u0086\3\2\2\2\u0089\u008c\3\2\2\2"+
-		"\u008a\u0088\3\2\2\2\u008a\u008b\3\2\2\2\u008b\u008e\3\2\2\2\u008c\u008a"+
-		"\3\2\2\2\u008d\u0085\3\2\2\2\u008d\u008e\3\2\2\2\u008e\u008f\3\2\2\2\u008f"+
-		"\u0090\7\31\2\2\u0090\33\3\2\2\2\u0091\u0092\3\2\2\2\u0092\35\3\2\2\2"+
-		"\u0093\u0094\b\20\1\2\u0094\u0095\7\32\2\2\u0095\u0096\5\36\20\2\u0096"+
-		"\u0097\7\33\2\2\u0097\u009d\3\2\2\2\u0098\u009d\7\20\2\2\u0099\u009d\7"+
-		"\16\2\2\u009a\u009d\5\32\16\2\u009b\u009d\5\34\17\2\u009c\u0093\3\2\2"+
-		"\2\u009c\u0098\3\2\2\2\u009c\u0099\3\2\2\2\u009c\u009a\3\2\2\2\u009c\u009b"+
-		"\3\2\2\2\u009d\u00af\3\2\2\2\u009e\u00a1\f\7\2\2\u009f\u00a2\7\25\2\2"+
-		"\u00a0\u00a2\7\26\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a0\3\2\2\2\u00a2\u00a3"+
-		"\3\2\2\2\u00a3\u00ae\5\36\20\b\u00a4\u00a5\f\6\2\2\u00a5\u00a6\7\24\2"+
-		"\2\u00a6\u00ae\5\36\20\7\u00a7\u00a8\f\5\2\2\u00a8\u00a9\7\23\2\2\u00a9"+
-		"\u00ae\5\36\20\6\u00aa\u00ab\f\4\2\2\u00ab\u00ac\7\27\2\2\u00ac\u00ae"+
-		"\5\36\20\5\u00ad\u009e\3\2\2\2\u00ad\u00a4\3\2\2\2\u00ad\u00a7\3\2\2\2"+
-		"\u00ad\u00aa\3\2\2\2\u00ae\u00b1\3\2\2\2\u00af\u00ad\3\2\2\2\u00af\u00b0"+
-		"\3\2\2\2\u00b0\37\3\2\2\2\u00b1\u00af\3\2\2\2\16#.\64Pwz\u008a\u008d\u009c"+
-		"\u00a1\u00ad\u00af";
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\6\2$\n"+
+		"\2\r\2\16\2%\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\60\n\3\3\3\3\3\6\3\64"+
+		"\n\3\r\3\16\3\65\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3"+
+		"\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\bR\n\b\3\t\3\t\3"+
+		"\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3"+
+		"\13\3\13\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\r\3\r\5\rs\n\r\3\r\3\r"+
+		"\3\16\3\16\3\16\3\16\5\16{\n\16\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u0083"+
+		"\n\16\3\16\3\16\3\16\3\17\3\17\3\17\5\17\u008b\n\17\3\17\3\17\3\20\3\20"+
+		"\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u009a\n\21\3\21\3\21"+
+		"\3\21\5\21\u009f\n\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21"+
+		"\7\21\u00ab\n\21\f\21\16\21\u00ae\13\21\3\21\2\3 \22\2\4\6\b\n\f\16\20"+
+		"\22\24\26\30\32\34\36 \2\3\4\2\35\35 !\u00b7\2#\3\2\2\2\4\63\3\2\2\2\6"+
+		"\67\3\2\2\2\b:\3\2\2\2\n?\3\2\2\2\fC\3\2\2\2\16Q\3\2\2\2\20S\3\2\2\2\22"+
+		"]\3\2\2\2\24e\3\2\2\2\26m\3\2\2\2\30p\3\2\2\2\32v\3\2\2\2\34\u0087\3\2"+
+		"\2\2\36\u008e\3\2\2\2 \u0099\3\2\2\2\"$\5\32\16\2#\"\3\2\2\2$%\3\2\2\2"+
+		"%#\3\2\2\2%&\3\2\2\2&\3\3\2\2\2\'\60\5\36\20\2(\60\5\20\t\2)\60\5\22\n"+
+		"\2*\60\5\24\13\2+\60\5\b\5\2,\60\5\6\4\2-\60\5\n\6\2.\60\5\34\17\2/\'"+
+		"\3\2\2\2/(\3\2\2\2/)\3\2\2\2/*\3\2\2\2/+\3\2\2\2/,\3\2\2\2/-\3\2\2\2/"+
+		".\3\2\2\2\60\61\3\2\2\2\61\62\7\3\2\2\62\64\3\2\2\2\63/\3\2\2\2\64\65"+
+		"\3\2\2\2\65\63\3\2\2\2\65\66\3\2\2\2\66\5\3\2\2\2\678\7\16\2\289\7\17"+
+		"\2\29\7\3\2\2\2:;\7\16\2\2;<\7\17\2\2<=\7\36\2\2=>\5 \21\2>\t\3\2\2\2"+
+		"?@\7\17\2\2@A\7\36\2\2AB\5 \21\2B\13\3\2\2\2CD\t\2\2\2D\r\3\2\2\2EF\5"+
+		" \21\2FG\7\35\2\2GH\5 \21\2HR\3\2\2\2IJ\5 \21\2JK\7 \2\2KL\5 \21\2LR\3"+
+		"\2\2\2MN\5 \21\2NO\7!\2\2OP\5 \21\2PR\3\2\2\2QE\3\2\2\2QI\3\2\2\2QM\3"+
+		"\2\2\2R\17\3\2\2\2ST\7\5\2\2TU\7\31\2\2UV\5\16\b\2VW\7\32\2\2WX\7\7\2"+
+		"\2XY\5\4\3\2YZ\7\b\2\2Z[\5\4\3\2[\\\7\6\2\2\\\21\3\2\2\2]^\7\5\2\2^_\7"+
+		"\31\2\2_`\5\16\b\2`a\7\32\2\2ab\7\7\2\2bc\5\4\3\2cd\7\6\2\2d\23\3\2\2"+
+		"\2ef\7\t\2\2fg\5\4\3\2gh\7\13\2\2hi\7\31\2\2ij\5\16\b\2jk\7\32\2\2kl\7"+
+		"\n\2\2l\25\3\2\2\2mn\7\16\2\2no\7\17\2\2o\27\3\2\2\2pr\7\f\2\2qs\7\17"+
+		"\2\2rq\3\2\2\2rs\3\2\2\2st\3\2\2\2tu\7\3\2\2u\31\3\2\2\2vw\7\r\2\2wx\7"+
+		"\20\2\2xz\7\31\2\2y{\5\26\f\2zy\3\2\2\2z{\3\2\2\2{|\3\2\2\2|}\7\32\2\2"+
+		"}~\7\31\2\2~\177\7\16\2\2\177\u0080\7\32\2\2\u0080\u0082\5\4\3\2\u0081"+
+		"\u0083\5\30\r\2\u0082\u0081\3\2\2\2\u0082\u0083\3\2\2\2\u0083\u0084\3"+
+		"\2\2\2\u0084\u0085\7\r\2\2\u0085\u0086\7\3\2\2\u0086\33\3\2\2\2\u0087"+
+		"\u0088\7\20\2\2\u0088\u008a\7\31\2\2\u0089\u008b\5\26\f\2\u008a\u0089"+
+		"\3\2\2\2\u008a\u008b\3\2\2\2\u008b\u008c\3\2\2\2\u008c\u008d\7\32\2\2"+
+		"\u008d\35\3\2\2\2\u008e\u008f\3\2\2\2\u008f\37\3\2\2\2\u0090\u0091\b\21"+
+		"\1\2\u0091\u0092\7\33\2\2\u0092\u0093\5 \21\2\u0093\u0094\7\34\2\2\u0094"+
+		"\u009a\3\2\2\2\u0095\u009a\7\21\2\2\u0096\u009a\7\17\2\2\u0097\u009a\5"+
+		"\34\17\2\u0098\u009a\5\36\20\2\u0099\u0090\3\2\2\2\u0099\u0095\3\2\2\2"+
+		"\u0099\u0096\3\2\2\2\u0099\u0097\3\2\2\2\u0099\u0098\3\2\2\2\u009a\u00ac"+
+		"\3\2\2\2\u009b\u009e\f\7\2\2\u009c\u009f\7\26\2\2\u009d\u009f\7\27\2\2"+
+		"\u009e\u009c\3\2\2\2\u009e\u009d\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\u00ab"+
+		"\5 \21\b\u00a1\u00a2\f\6\2\2\u00a2\u00a3\7\25\2\2\u00a3\u00ab\5 \21\7"+
+		"\u00a4\u00a5\f\5\2\2\u00a5\u00a6\7\24\2\2\u00a6\u00ab\5 \21\6\u00a7\u00a8"+
+		"\f\4\2\2\u00a8\u00a9\7\30\2\2\u00a9\u00ab\5 \21\5\u00aa\u009b\3\2\2\2"+
+		"\u00aa\u00a1\3\2\2\2\u00aa\u00a4\3\2\2\2\u00aa\u00a7\3\2\2\2\u00ab\u00ae"+
+		"\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ac\u00ad\3\2\2\2\u00ad!\3\2\2\2\u00ae"+
+		"\u00ac\3\2\2\2\16%/\65Qrz\u0082\u008a\u0099\u009e\u00aa\u00ac";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
