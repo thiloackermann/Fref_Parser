@@ -12,13 +12,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link frefParser#EmptyParam}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEmptyParam(@NotNull frefParser.EmptyParamContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link frefParser#fnctcall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -110,13 +103,6 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	T visitGTCond(@NotNull frefParser.GTCondContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link frefParser#ExpressionList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpressionList(@NotNull frefParser.ExpressionListContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link frefParser#FuncCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -150,13 +136,6 @@ public interface frefVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEQCond(@NotNull frefParser.EQCondContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link frefParser#emptyList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEmptyList(@NotNull frefParser.EmptyListContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link frefParser#Subtraction}.

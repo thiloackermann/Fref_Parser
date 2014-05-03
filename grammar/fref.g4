@@ -104,14 +104,15 @@ dowhileclause: DOLEXER
 	   EXPRBRACKCLOSE
        DOCLOSE;
 	   
-fnctnPrm: type=VARIABLETYPE name=VARIABLE #FunctionParameter;
+fnctnPrm: (declarations+=dclrtn) (PARAKOMMA declarations+=dclrtn)* #FunctionParameter
+			| emptyExpression #EmptyParam;
 	   
 retValue: RETURNLEXER name=VARIABLE? LINEBREAK;	   
 	   
 fnctn: FUNCDEF //#
 	   functionname = FUNCTNAME
        EXPRBRACKOPEN
-	   (fp=fnctnPrm)?
+	   fp=fnctnPrm
 	   EXPRBRACKCLOSE
 	   EXPRBRACKOPEN
 	   ret = VARIABLETYPE
@@ -123,8 +124,11 @@ fnctn: FUNCDEF //#
 	   
 fnctcall: functionname = FUNCTNAME
 		  EXPRBRACKOPEN
-		  (fp=fnctnPrm)?
+		  el=expList
 		  EXPRBRACKCLOSE;
+		  
+expList: (expressions+=expression) (PARAKOMMA expressions+=expression)* #ExpressionList
+			|emptyExpression #emptyList;
 		  
 emptyExpression:  #ExpressionWithoutStatement;
 
