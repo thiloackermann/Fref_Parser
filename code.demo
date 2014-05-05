@@ -1,0 +1,4 @@
+Number b = 3!
+if<<b==3>>
+then: Out<<Number b>>!
+fi!
